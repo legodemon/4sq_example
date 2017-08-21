@@ -1,0 +1,120 @@
+@mixin flex-container($direction: row, $main-axis: flex-start, $cross-axis: stretch) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $main-axis;
+  align-items: $cross-axis;
+}
+
+$bgBlockClr: #60d69b;
+$blockWidth: 550px;
+
+body {
+  background-color: #5e8bc9;
+  box-sizing: border-box;
+  width: 100%;
+  color: white;
+
+  .App {
+
+    .header-menu {
+      //position: fixed;
+      width: 90%;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      background-color: red;
+
+      border-radius: 10px;
+
+      @include flex-container(row, space-between, center);
+
+      .header-menu-titles {
+        padding-left: 20px;
+
+        .header-menu-titles__title {
+          font-size: 18px;
+          color: gold;
+        }
+      }
+
+      .header-menu-buttons {
+        @include flex-container(row, space-between, center);
+
+        .header-menu-buttons__button {
+          padding: 20px;
+          font-size: 12px;
+          cursor: pointer;
+          &:hover {
+            background-color: #ff7e77;
+          }
+        }
+      }
+
+    }
+
+    .search {
+
+      //position: fixed;
+      left: 0;
+      right: 0;
+      top: 100px;
+      margin: 0 auto;
+      width: $blockWidth;
+
+      @include flex-container(row, center, center);
+
+      padding: 0;
+
+      .search__input {
+        border-radius: 10px;
+        width: 100%;
+        height: 35px;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .places {
+
+      @include flex-container(column, space-around, center);
+      padding-top: 140px;
+
+      .place {
+        background-color: $bgBlockClr;
+        width: $blockWidth;
+        padding: 10px;
+
+        .place__tile {
+
+        }
+
+        .place-body {
+          @include flex-container(row, space-between, flex-start);
+
+          .place-body__description {
+              font-size: 12px;
+          }
+
+          .place-body__photo {
+
+          }
+        }
+
+        .place-bookmark {
+          .place-bookmark__icon {
+
+          }
+          .place-bookmark__title {
+
+          }
+        }
+
+      }
+
+    }
+
+  }
+}
